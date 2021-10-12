@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateActions < ActiveRecord::Migration[6.1]
   def change
     create_table :actions do |t|
@@ -10,6 +12,6 @@ class CreateActions < ActiveRecord::Migration[6.1]
 
     add_index :actions, :liked_id
     add_index :actions, :like_id
-    add_index :actions, [:liked_id, :like_id], unique: true
+    add_index :actions, %i[liked_id like_id], unique: true
   end
 end
