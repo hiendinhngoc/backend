@@ -1,0 +1,9 @@
+require: rubocop-rails
+
+AllCops:
+  Exclude:
+    - lib/**/
+    - config/**/*
+    - bin/**/**
+Style/Documentation:
+  Enabled: false
