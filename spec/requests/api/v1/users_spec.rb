@@ -14,7 +14,7 @@ RSpec.describe 'Api::V1::Users', type: :request do
       expect(users).to include(json['data'])
     end
 
-    it 'returns status code 200' do
+    it 'returns http success' do
       expect(response).to have_http_status(:success)
     end
   end
