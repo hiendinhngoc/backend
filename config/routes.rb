@@ -6,8 +6,8 @@ Rails.application.routes.draw do
       resource :users, only: :show
       post '/user/like', to: 'users#like'
       post '/user/pass', to: 'users#pass'
-      get '/user/liked_list', to: 'users#liked_list'
-      get '/user/passed_list', to: 'users#passed_list'
+      get '/user/favoriting', to: 'users#favoriting'
+      get '/user/matching', to: 'users#matching'
     end
   end
 end
