@@ -1,24 +1,13 @@
-# README
+# Fake tinder
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the back-end version of tinder( :couple: ) cloning app. There are some basic functions:
 
-Things you may want to cover:
+* `GET /api/v1/users` => Shows potential partner info
 
-* Ruby version
+* `POST /api/v1/user/like` => Likes an interesting user
 
-* System dependencies
+* `POST /api/v1/user/pass` => Stays away from someone
 
-* Configuration
+* `GET /api/v1/user/favoriting` => Group of favourite guys
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* `GET /api/v1/user/matching` => We have so much in common
