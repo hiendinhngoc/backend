@@ -3,18 +3,21 @@
 require 'rails_helper'
 
 RSpec.describe 'Api::V1::Users', type: :request do
-  let(:user) { create(:user) }
-  let(:users) { create_list(:user, 10) }
+  let!(:users) { create_list(:user, 10) }
+  let(:user) { users.first }
+  let(:someone) { create(:user, id: 11) }
+  let!(:favoriting) { user.like(someone) }
+  let!(:favourites) { someone.like(user) }
 
   describe 'GET /api/v1/users' do
     before { get '/api/v1/users' }
 
     it 'returns user' do
       expect(json).not_to be_empty
-      expect(users).to include(json['data'])
+      expect(users.pluck(:id)).to include(json['id'])
     end
 
-    it 'returns status code 200' do
+    it 'returns http success' do
       expect(response).to have_http_status(:success)
     end
   end
@@ -22,32 +25,53 @@ RSpec.describe 'Api::V1::Users', type: :request do
   describe 'POST /api/v1/user/like' do
     before { post '/api/v1/user/like' }
 
-    it 'increases the liked user count' do
-      pending 'add the test later'
+    it 'increases favoriting list by 1' do
+      expect(user.favoriting.size).to eq 2
+    end
+
+    it 'returns http success' do
+      expect(json['message']).to eq 'success'
+      expect(response).to have_http_status(:success)
     end
   end
 
   describe 'POST /api/v1/user/pass' do
     before { post '/api/v1/user/pass' }
 
-    it 'increases the passd user count' do
-      pending 'add the test later'
+    it 'increases passing list by 1' do
+      expect(user.passing.size).to eq 1
+    end
+
+    it 'returns http success' do
+      expect(json['message']).to eq 'success'
+      expect(response).to have_http_status(:success)
     end
   end
 
-  describe 'GET /api/v1/user/liked_list' do
-    before { get '/api/v1/user/liked_list' }
+  describe 'GET /api/v1/user/favoriting' do
+    before { get '/api/v1/user/favoriting' }
 
     it 'returns favoriting list' do
-      pending 'add the test later'
+      expect(json).not_to be_empty
+      expect(json.size).to eq user.favoriting.size
+    end
+
+    it 'returns http success' do
+      expect(response).to have_http_status(:success)
     end
   end
 
-  describe 'GET /api/v1/user/passed_list' do
-    before { get '/api/v1/user/passed_list' }
+  describe 'GET /api/v1/user/matching' do
+    before { get '/api/v1/user/matching' }
 
-    it 'return passing list' do
-      pending 'add the test later'
+    it 'returns matching list' do
+      matching = user.favoriting & user.favourites
+      expect(json).not_to be_empty
+      expect(json.first['id']).to eq matching.pick(:id)
+    end
+
+    it 'returns http success' do
+      expect(response).to have_http_status(:success)
     end
   end
 end
