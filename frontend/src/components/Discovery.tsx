@@ -70,10 +70,10 @@ const Discovery: React.FC<UserProps> = ({ initialUsers }) => {
           )
         }
       </div>
-      <div className="buttons">
+      {/*<div className="buttons" id="actions">
         <button onClick={() => swipe('left')}>Pass</button>
         <button onClick={() => swipe('right')}>Like</button>
-      </div>
+      </div>*/}
     </div>
   );
 }

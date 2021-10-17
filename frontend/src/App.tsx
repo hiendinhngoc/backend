@@ -57,10 +57,10 @@ function App() {
       {isDiscovery && <Discovery initialUsers={initialUsers} />}
       {isFavoriting && <Favoriting />}
       {isMatching && <Matching />}
-      <div className="buttons">
-        <button onClick={handleOpenFavoriting}>Favoriting</button>
-        <button onClick={handleOpenDiscovery}>Discover</button>
-        <button onClick={handleOpenMatching}>Matches</button>
+      <div className="buttons" id="switchButton">
+        <button onClick={handleOpenFavoriting} className={isFavoriting ? "active" : ''}>Favoriting</button>
+        <button onClick={handleOpenDiscovery} className={isDiscovery ? "active" : ''}>Discover</button>
+        <button onClick={handleOpenMatching} className={isMatching ? "active" : ''}>Matches</button>
       </div>
     </div>
   );

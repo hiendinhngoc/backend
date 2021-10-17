@@ -29,7 +29,7 @@ const Favoriting: React.FC = () => {
         favoriting.map((user, index) =>
           <div key={index} className="grid-item" >
             <div style={{ backgroundImage: 'url('+ user.image +')' }} className="card-favoriting">
-              <h3>{user.first_name} {user.last_name}, {user.age}</h3>
+              <span>{user.first_name} {user.last_name}, {user.age}</span>
             </div>
           </div>
         )
