@@ -10,8 +10,8 @@ class User < ApplicationRecord
                                   inverse_of: :liked,
                                   dependent: :destroy
   has_many :active_pass_actions, class_name: 'Action',
-                                 foreign_key: 'passed_id',
-                                 inverse_of: :passed,
+                                 foreign_key: 'pass_id',
+                                 inverse_of: :pass,
                                  dependent: :destroy
 
   has_many :favoriting, through: :active_like_actions, source: :liked

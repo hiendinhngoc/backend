@@ -5,6 +5,7 @@ require 'rails_helper'
 RSpec.describe 'Api::V1::Users', type: :request do
   let!(:users) { create_list(:user, 10) }
   let(:user) { users.first }
+  let(:test_user) { users.second }
   let(:someone) { create(:user, id: 11) }
   let!(:favoriting) { user.like(someone) }
   let!(:favourites) { someone.like(user) }
@@ -12,9 +13,9 @@ RSpec.describe 'Api::V1::Users', type: :request do
   describe 'GET /api/v1/users' do
     before { get '/api/v1/users' }
 
-    it 'returns user' do
+    it 'returns users list' do
       expect(json).not_to be_empty
-      expect(users.pluck(:id)).to include(json['id'])
+      expect(json.size).to eq users.size
     end
 
     it 'returns http success' do
@@ -22,11 +23,11 @@ RSpec.describe 'Api::V1::Users', type: :request do
     end
   end
 
-  describe 'POST /api/v1/user/like' do
-    before { post '/api/v1/user/like' }
+  describe 'POST /api/v1/user/like/:id' do
+    before { post "/api/v1/user/like/#{test_user.id}" }
 
     it 'increases favoriting list by 1' do
-      expect(user.favoriting.size).to eq 2
+      expect(user.favoriting).to include test_user
     end
 
     it 'returns http success' do
@@ -35,11 +36,11 @@ RSpec.describe 'Api::V1::Users', type: :request do
     end
   end
 
-  describe 'POST /api/v1/user/pass' do
-    before { post '/api/v1/user/pass' }
+  describe 'POST /api/v1/user/pass/:id' do
+    before { post "/api/v1/user/pass/#{test_user.id}" }
 
     it 'increases passing list by 1' do
-      expect(user.passing.size).to eq 1
+      expect(user.passing).to include test_user
     end
 
     it 'returns http success' do
