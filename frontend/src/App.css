@@ -53,17 +53,17 @@ h2 {
 
 .cardContainer {
   width: 90vw;
-  max-width: 260px;
-  height: 300px;
+  max-width: 350px;
+  height: 545px;
+  overflow: hidden;
 }
 
 .card {
   position: relative;
   background-color: #fff;
   width: 80vw;
-  max-width: 260px;
-  height: 300px;
-  border-radius: 20px;
+  max-width: 350px;
+  height: 545px;
   background-size: cover;
   background-position: center;
 }
@@ -105,12 +105,9 @@ h2 {
   border-radius: 5px;
   border: none;
   color: #fff;
-  font-size: 18px;
   background-color: #9198e5;
   transition: 200ms;
   margin: 0 10px;
-  font-weight: bolder;
-  width: 160px;
   box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.10);
 }
 
@@ -118,11 +115,19 @@ h2 {
   transform: scale(1.05);
 }
 
-.grid-container {
+.buttons .active {
+  background: #e16331;
+  pointer-events: none;
+}
+
+.grid-container, #switchButton {
   display: inline-grid !important;
-  grid-template-columns: auto auto;
   padding: 10px;
   overflow: scroll;
+}
+
+.grid-container {
+  grid-template-columns: auto auto;
 }
 
 .grid-item {
@@ -134,8 +139,9 @@ h2 {
 }
 
 .card-favoriting {
-  background-size: contain;
+  background-size: cover;
   height: 172px;
+  width: 158px;
 }
 
 .avatar {
@@ -152,6 +158,13 @@ h2 {
 .list-matches { width: 90% }
 .list-matches tr:nth-child(even){background-color: #f2f2f2;}
 .list-matches tr:hover {background-color: #ddd;}
+
+#switchButton {
+  grid-template-columns: auto auto auto;
+  bottom: 145px;
+  margin-left: 30px;
+  position: absolute;
+}
 
 @keyframes popup {
   0%   { transform: scale(1,1) }
