@@ -9,16 +9,16 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 images = [
-  'https://www.flickr.com/photos/122668677@N03/51588681716/in/dateposted-public/',
-  'https://www.flickr.com/photos/122668677@N03/51589338854/in/dateposted-public/',
-  'https://www.flickr.com/photos/122668677@N03/51588897318/in/dateposted-public/',
-  'https://www.flickr.com/photos/122668677@N03/51588897163/in/dateposted-public/',
-  'https://www.flickr.com/photos/122668677@N03/51588680926/in/dateposted-public/',
-  'https://www.flickr.com/photos/122668677@N03/51587846207/in/dateposted-public/',
-  'https://www.flickr.com/photos/122668677@N03/51589338224/in/dateposted-public/',
-  'https://www.flickr.com/photos/122668677@N03/51587846042/in/dateposted-public/',
-  'https://www.flickr.com/photos/122668677@N03/51588896513/in/dateposted-public/',
-  'https://www.flickr.com/photos/122668677@N03/51587845892/in/dateposted-public/'
+  'https://live.staticflickr.com/65535/51589338854_5b7a6aa0c4.jpg',
+  'https://live.staticflickr.com/65535/51588681716_c1474187b0.jpg',
+  'https://live.staticflickr.com/65535/51588897318_5cf408a6bd.jpg',
+  'https://live.staticflickr.com/65535/51588897163_22b7671f16.jpg',
+  'https://live.staticflickr.com/65535/51588680926_c125ca55da.jpg',
+  'https://live.staticflickr.com/65535/51587846207_9d8b83f800.jpg',
+  'https://live.staticflickr.com/65535/51589338224_17e4eec79c.jpg',
+  'https://live.staticflickr.com/65535/51587846042_9d9b881e31.jpg',
+  'https://live.staticflickr.com/65535/51587845892_b770594bd9.jpg',
+  'https://live.staticflickr.com/65535/51588896513_b528a3b0f8.jpg'
 ]
 
 100.times do

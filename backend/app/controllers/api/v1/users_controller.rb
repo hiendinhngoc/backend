@@ -3,10 +3,11 @@
 module Api
   module V1
     class UsersController < ApplicationController
-      before_action :set_user, only: %i[show like pass]
+      before_action :set_user, only: %i[like pass]
 
-      def show
-        render json: @user
+      def index
+        users = User.all - current_user.favoriting - current_user.passing
+        render json: users
       end
 
       def like
@@ -32,7 +33,7 @@ module Api
       private
 
       def set_user
-        @user = (User.all - current_user.favoriting - current_user.passing).sample
+        @user = User.find params[:id]
       end
     end
   end

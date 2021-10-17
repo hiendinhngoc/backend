@@ -1,38 +1,37 @@
-import React, { useState } from 'react';
-import axios from 'axios'
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Discovery from './components/Discovery';
 import './App.css';
 
-function App() {
-  const [user, setUser] = useState(null);
+interface User {
+  id: number,
+  first_name: string,
+  last_name: string,
+  age: number,
+  image: string,
+}
 
-  const showUserInfo = () => {
-    axios.get('http://localhost:3001/api/v1/users')
-    .then((response: any) => {
-      setUser(response.data);
-    }).catch(error => console.log("calling api error ", error))
+function App() {
+  const [initialUsers, setInitialUsers] = useState<User[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  const getUsers = async () => {
+    await axios.get<User[]>('http://localhost:3001/api/v1/users')
+    .then((response) => {
+      setInitialUsers(response.data);
+      setLoading(false);
+    }).catch(error => console.log("calling get list users error ", error))
   }
 
+  useEffect(() => {
+    getUsers()
+  }, []);
+
+  if(loading) { return <div>Loading...</div>}
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <p>
-          {JSON.stringify(user)}
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <button onClick={showUserInfo}>Show User</button>
-      </header>
+    <div className="app">
+      <Discovery initialUsers={initialUsers} />
     </div>
   );
 }
