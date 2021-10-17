@@ -1,13 +1,3 @@
 # Fake tinder
 
-This is the back-end version of tinder( :couple: ) cloning app. There are some basic functions:
-
-* `GET /api/v1/users` => Shows potential partner info
-
-* `POST /api/v1/user/like` => Likes an interesting user
-
-* `POST /api/v1/user/pass` => Stays away from someone
-
-* `GET /api/v1/user/favoriting` => Group of favourite guys
-
-* `GET /api/v1/user/matching` => We have so much in common
+The cloning Tinder app with some basic fucnstions: like, pass, getting likes, matches list. It is using Rails as backend and React as frontend. These are details about [backend](https://github.com/hiendinhngoc/fake-tinder/tree/main/backend) and [frontend](https://github.com/hiendinhngoc/fake-tinder/tree/main/frontend) 
