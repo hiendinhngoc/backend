@@ -13,7 +13,6 @@
 #root>div {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   background-color: #fff;
 }
@@ -118,6 +117,41 @@ h2 {
 .buttons button:hover {
   transform: scale(1.05);
 }
+
+.grid-container {
+  display: inline-grid !important;
+  grid-template-columns: auto auto;
+  padding: 10px;
+  overflow: scroll;
+}
+
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5px;
+  font-size: 15px;
+  text-align: center;
+  color: #fff;
+}
+
+.card-favoriting {
+  background-size: contain;
+  height: 172px;
+}
+
+.avatar {
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow:hidden;
+  -webkit-border-radius:50px;
+  -moz-border-radius:50px;
+  border-radius:50px;
+  width:50px;
+  height:50px;
+}
+
+.list-matches { width: 90% }
+.list-matches tr:nth-child(even){background-color: #f2f2f2;}
+.list-matches tr:hover {background-color: #ddd;}
 
 @keyframes popup {
   0%   { transform: scale(1,1) }
