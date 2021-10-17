@@ -25,7 +25,7 @@ backend/tmp/pids/*
 # Ignore uploaded files in development.
 backend/storage/*
 !/storage/.keep
-backend.byebug_history
+backend/.byebug_history
 
 # Ignore master key for decrypting credentials and more.
 backend/config/master.key
