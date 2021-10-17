@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Discovery from './components/Discovery';
 import Favoriting from './components/Favoriting';
+import Matching from './components/Matching';
 import './App.css';
 
 interface User {
@@ -17,7 +18,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [isDiscovery, setIsDiscovery] = useState(true);
   const [isFavoriting, setIsFavoriting] = useState(false);
-  // const [isMatching, setIsMatching] = useState(false);
+  const [isMatching, setIsMatching] = useState(false);
 
   const getUsers = async () => {
     await axios.get<User[]>('http://localhost:3001/api/v1/users')
@@ -34,11 +35,19 @@ function App() {
   const handleOpenDiscovery = () => {
     setIsDiscovery(true);
     setIsFavoriting(false);
+    setIsMatching(false);
   }
 
   const handleOpenFavoriting = () => {
     setIsDiscovery(false);
     setIsFavoriting(true);
+    setIsMatching(false);
+  }
+
+  const handleOpenMatching = () => {
+    setIsDiscovery(false);
+    setIsFavoriting(false);
+    setIsMatching(true);
   }
 
   if(loading) { return <div>Loading...</div>}
@@ -47,10 +56,11 @@ function App() {
     <div className="app">
       {isDiscovery && <Discovery initialUsers={initialUsers} />}
       {isFavoriting && <Favoriting />}
+      {isMatching && <Matching />}
       <div className="buttons">
         <button onClick={handleOpenFavoriting}>Favoriting</button>
         <button onClick={handleOpenDiscovery}>Discover</button>
-        <button onClick={undefined}>Matches</button>
+        <button onClick={handleOpenMatching}>Matches</button>
       </div>
     </div>
   );
