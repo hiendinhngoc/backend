@@ -1,6 +1,12 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).It mimics Tinder app with some basic features. For the core function of the app - swipe, I use `react-tinder-card` to support me handle swiping images.
+
+## Versions
+- React: 17.0.2
+- Typescript: 4.1.2
+- react-tinder-card: 1.4.3
+- Eslint: 7.26.1
 
 ## Available Scripts
 
@@ -13,6 +19,10 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
+
+### `yarn lint`
+
+Check the types using in the app are valid or not, it will tells you where the erros are and which kind of errors. Auto fix type issues with `--fix` option.
 
 ### `yarn test`
 
