@@ -7,6 +7,7 @@
   overflow: hidden;
   /* background: linear-gradient(#fff, #999); */
   background: linear-gradient(#e66465, #9198e5);
+  align-items: center;
 }
 
 #root>div {
@@ -14,6 +15,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #fff;
+}
+
+.app {
+  width: 350px;
+  height: 600px;
 }
 
 .app>div {
