@@ -10,18 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_16_164832) do
+ActiveRecord::Schema.define(version: 2021_10_31_151523) do
 
   create_table "actions", force: :cascade do |t|
     t.integer "liked_id"
-    t.integer "like_id"
     t.integer "passed_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "pass_id"
-    t.index ["like_id"], name: "index_actions_on_like_id"
-    t.index ["liked_id", "like_id"], name: "index_actions_on_liked_id_and_like_id", unique: true
+    t.integer "owner_id"
     t.index ["liked_id"], name: "index_actions_on_liked_id"
+    t.index ["owner_id", "liked_id"], name: "index_actions_on_owner_id_and_liked_id", unique: true
+    t.index ["owner_id"], name: "index_actions_on_owner_id"
   end
 
   create_table "users", force: :cascade do |t|
