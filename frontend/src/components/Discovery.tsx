@@ -2,6 +2,10 @@ import React, { useState, useMemo } from 'react';
 import axios from 'axios';
 import TinderCard from 'react-tinder-card';
 import { ActionCableConsumer } from 'react-actioncable-provider';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure()
 
 interface User {
   id: number,
@@ -54,7 +58,7 @@ const Discovery: React.FC<UserProps> = ({ initialUsers }) => {
   }
 
   const handleNotification = response => {
-    console.log(response.data);
+    toast(response.message);
   }
 
   return (
@@ -77,7 +81,7 @@ const Discovery: React.FC<UserProps> = ({ initialUsers }) => {
       </div>
       <ActionCableConsumer
         channel={{channel: 'NotificationChannel'}}
-        onReceive={handleNotification}
+        onReceived={handleNotification}
       />
       {/*<div className="buttons" id="actions">
         <button onClick={() => swipe('left')}>Pass</button>

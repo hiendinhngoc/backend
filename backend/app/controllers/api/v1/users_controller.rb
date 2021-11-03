@@ -13,10 +13,8 @@ module Api
       def like
         current_user.like(@user)
 
-        if current_user.favourites.include? @user
-          notification(@user)
-        end
-        
+        notification(@user) if current_user.favourites.include? @user
+
         render json: { message: 'success' }
       end
 
@@ -42,7 +40,8 @@ module Api
       end
 
       def notification(user)
-        ActionCable.server.broadcast 'notification_channel', { message: "You match with #{user.first_name} #{user.last_name}"}
+        ActionCable.server.broadcast 'notification_channel',
+                                     { message: "You match with #{user.first_name} #{user.last_name}" }
       end
     end
   end
