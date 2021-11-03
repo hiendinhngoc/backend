@@ -4,6 +4,7 @@ import Discovery from './components/Discovery';
 import Favoriting from './components/Favoriting';
 import Matching from './components/Matching';
 import './App.css';
+import { ActionCableProvider } from 'react-actioncable-provider';
 
 interface User {
   id: number,
@@ -54,7 +55,9 @@ function App() {
 
   return (
     <div className="app">
-      {isDiscovery && <Discovery initialUsers={initialUsers} />}
+      <ActionCableProvider url={'ws://localhost:3001/cable'}>
+        {isDiscovery && <Discovery initialUsers={initialUsers} />}
+      </ActionCableProvider>
       {isFavoriting && <Favoriting />}
       {isMatching && <Matching />}
       <div className="buttons" id="switchButton">
