@@ -122,12 +122,11 @@ h2 {
 
 .grid-container, #switchButton {
   display: inline-grid !important;
-  padding: 10px;
-  overflow: scroll;
 }
 
 .grid-container {
   grid-template-columns: auto auto;
+  overflow: scroll;
 }
 
 .grid-item {
@@ -163,7 +162,6 @@ h2 {
   grid-template-columns: auto auto auto;
   bottom: 145px;
   margin-left: 30px;
-  position: absolute;
 }
 
 @keyframes popup {

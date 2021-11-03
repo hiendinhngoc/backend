@@ -12,6 +12,9 @@ module Api
 
       def like
         current_user.like(@user)
+
+        notification(@user) if current_user.favourites.include? @user
+
         render json: { message: 'success' }
       end
 
@@ -34,6 +37,11 @@ module Api
 
       def set_user
         @user = User.find params[:id]
+      end
+
+      def notification(user)
+        ActionCable.server.broadcast 'notification_channel',
+                                     { message: "You match with #{user.first_name} #{user.last_name}" }
       end
     end
   end
